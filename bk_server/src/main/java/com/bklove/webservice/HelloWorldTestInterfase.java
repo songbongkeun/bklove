@@ -1,4 +1,4 @@
-package com.skcc.springserver.webservice;
+package com.bklove.webservice;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;

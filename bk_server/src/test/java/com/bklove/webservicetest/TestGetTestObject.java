@@ -1,28 +1,29 @@
-package com.skcc.springserver.webservicetest;
+package com.bklove.webservicetest;
 
 import java.net.URI;
 
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.UriBuilder;
 
+import com.bklove.vo.TestObject;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.WebResource;
 import com.sun.jersey.api.client.config.ClientConfig;
 import com.sun.jersey.api.client.config.DefaultClientConfig;
 
-public class TestHelloWorld {
-
+public class TestGetTestObject {
 	public static void main(String[] args) {
 		ClientConfig config = new DefaultClientConfig();
 		Client client = Client.create(config);
 		WebResource service = client.resource(getBaseURI());
-		// Get Hello World
-		System.out.println(service.path("helloworld").accept(MediaType.TEXT_PLAIN).get(String.class));
-		System.out.println(service.path("helloworld").accept(MediaType.TEXT_XML).get(String.class));
-		System.out.println(service.path("helloworld").accept(MediaType.TEXT_HTML).get(String.class));
+		// Get Name Case
+		TestObject testObject = new TestObject();
+		testObject.setAge("31");
+		testObject.setEmpNo(6733);
+		System.out.println(service.path("getObjectTest").path("getName").accept(MediaType.APPLICATION_JSON).post(TestObject.class, testObject));
 	}
 
 	private static URI getBaseURI() {
-		return UriBuilder.fromUri("http://localhost:8080/skcc_server/").build();
+		return UriBuilder.fromUri("http://localhost:8080/bk_server/").build();
 	}
 }

@@ -1,4 +1,4 @@
-package com.skcc.springserver.vo;
+package com.bklove.vo;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
