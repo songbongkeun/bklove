@@ -12,6 +12,8 @@ import javax.ws.rs.Path;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import org.eclipse.jetty.util.log.Log;
+
 import com.sun.jersey.core.header.FormDataContentDisposition;
 import com.sun.jersey.multipart.FormDataParam;
 
@@ -20,6 +22,7 @@ public class ReceivedPicture {
 	@POST
 	@Consumes(MediaType.MULTIPART_FORM_DATA)
 	public Response pushPicture(@FormDataParam("file") InputStream uploadedInputStream, @FormDataParam("file") FormDataContentDisposition fileDetail) {
+		Log.debug("received /pushPicture");
 		String uploadedFileLocation = "c://uploaded/" + fileDetail.getFileName();
 		// save it
 		writeToFile(uploadedInputStream, uploadedFileLocation);

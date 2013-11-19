@@ -32,7 +32,7 @@ public class TestReceivePicture {
 	}
 
 	private static URI getBaseURI() {
-		return UriBuilder.fromUri("http://localhost:8080/bk_server/").build();
+		return UriBuilder.fromUri("http://localhost:8080/bk_server/pushPicture").build();
 	}
 
 }
